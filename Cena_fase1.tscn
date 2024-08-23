@@ -20,4 +20,4 @@ position = Vector2( -2, 0 )
 shape = SubResource( 1 )
 
 [node name="Node2D" parent="." instance=ExtResource( 2 )]
-position = Vector2( 82, 512 )
+position = Vector2( 178, 457 )

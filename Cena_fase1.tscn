@@ -4,20 +4,35 @@
 [ext_resource path="res://cena_personagem.tscn" type="PackedScene" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 235, 33 )
+extents = Vector2( 682.25, 35.25 )
 
 [node name="Node2D" type="Node2D"]
+position = Vector2( 4, -1 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2( 242, 567 )
+position = Vector2( 589, 569 )
+
+[node name="Sprite2" type="Sprite" parent="StaticBody2D"]
+position = Vector2( -437, -5 )
+texture = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="StaticBody2D"]
-position = Vector2( 1, 0 )
+position = Vector2( 18, -4 )
+texture = ExtResource( 1 )
+
+[node name="Sprite3" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 467, -5 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( -2, 0 )
+position = Vector2( 7, 4 )
 shape = SubResource( 1 )
 
 [node name="Node2D" parent="." instance=ExtResource( 2 )]
-position = Vector2( 178, 457 )
+position = Vector2( 221, 241 )
+
+[node name="TileMap" type="TileMap" parent="."]
+visible = false
+position = Vector2( 406, 346 )
+mode = 2
+format = 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://movimentoPersonagem.gd" type="Script" id=1]
 [ext_resource path="res://Game Boy Advance - Tales of the World Narikiri Dungeon 3 - Lloyd Irving para godot.png" type="Texture" id=2]
@@ -25,6 +25,20 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=2]
 resource_name = "Correndo"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 394, 87, 44, 43 ), Rect2( 440, 86, 44, 44 ), Rect2( 486, 90, 46, 40 ), Rect2( 534, 87, 44, 43 ), Rect2( 580, 87, 45, 43 ), Rect2( 627, 90, 46, 40 ) ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "MexendoEspadas"
@@ -77,6 +91,14 @@ tracks/0/keys = {
 "values": [ Rect2( 97, 7, 51, 56 ) ]
 }
 
+[sub_resource type="AnimationNodeBlendSpace2D" id=8]
+
+[sub_resource type="AnimationNodeStateMachine" id=9]
+states/BlendSpace2D/node = SubResource( 8 )
+states/BlendSpace2D/position = Vector2( 461, 73 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=10]
+
 [node name="Node2D" type="Node2D"]
 position = Vector2( 134, 98 )
 
@@ -85,7 +107,6 @@ script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="KinematicBody2D"]
 position = Vector2( 1.52588e-05, 7.62939e-06 )
-scale = Vector2( 0.985714, 1 )
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 97, 7, 51, 56 )
@@ -102,3 +123,8 @@ anims/MexendoEspadas = SubResource( 3 )
 anims/Parado = SubResource( 4 )
 anims/PuloNormal = SubResource( 5 )
 anims/RESET = SubResource( 6 )
+
+[node name="AnimationTree" type="AnimationTree" parent="KinematicBody2D"]
+tree_root = SubResource( 9 )
+parameters/playback = SubResource( 10 )
+parameters/BlendSpace2D/blend_position = Vector2( 0, 0 )
